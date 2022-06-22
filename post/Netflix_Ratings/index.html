@@ -1,0 +1,380 @@
+<html>
+  <head>
+     <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[脚本分享] 烂片退散! 奈飞 Netflix 显示影片评分. | 罗二德</title>
+<meta name="description" content="折腾是乐趣所在!" />
+<link rel="shortcut icon" href="https://lorde627.xyz/favicon.ico?v=1655887803227">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://lorde627.xyz/styles/main.css">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-192776772-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-192776772-1');
+</script>
+
+</script></script>
+
+    <meta name="description" content="你是否曾在 Netflix 上随意浏览,点开一部电影观看到看到一半却发现烂到不行?
+相信我,我已经有过数次这般的体验了.其实 Netflix 在早期是有用户评分的栏目,后来为了避免烂片没有人观赏,Netflix 将用户评分下架,改为了顶和踩..." />
+    <!-- OG -->
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:title" content="[脚本分享] 烂片退散! 奈飞 Netflix 显示影片评分." />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="你是否曾在 Netflix 上随意浏览,点开一部电影观看到看到一半却发现烂到不行?
+相信我,我已经有过数次这般的体验了.其实 Netflix 在早期是有用户评分的栏目,后来为了避免烂片没有人观赏,Netflix 将用户评分下架,改为了顶和踩...">
+    <meta property="og:url" content="https://lorde627.xyz/post/Netflix_Ratings/" />
+    <meta property="og:site_name" content="罗二德">
+    <meta property="og:updated_time" content="2022-01-18">
+    <meta property="og:image" content="https://lorde627.xyz/post-images/Netflix_Ratings.webp" />
+    <meta property="og:image:secure_url" content="https://lorde627.xyz/post-images/Netflix_Ratings.webp">
+    <meta property="og:image:alt" content="[脚本分享] 烂片退散! 奈飞 Netflix 显示影片评分.">
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://lorde627.xyz">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://lorde627.xyz/images/avatar.png?v=1655887803227" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">罗二德</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">准备工作</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE">脚本配置</a>
+<ul>
+<li><a href="#quantumult-x-%E9%85%8D%E7%BD%AE">Quantumult X 配置</a></li>
+<li><a href="#surge-%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE">Surge 脚本配置</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA">效果展示✨</a></li>
+<li><a href="#pc%E7%AB%AF%E6%8F%92%E4%BB%B6">PC端插件</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+<li><a href="#%E6%9C%80%E5%90%8E-lets-netflix-and-chill">最后 <s>Let's Netflix and Chill</s></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives/" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags/" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about/" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br>
+Hosted by <a href="https://www.vx.link" target="_blank">VX.Link</a></div>
+    <a class="rss" href="https://lorde627.xyz/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">[脚本分享] 烂片退散! 奈飞 Netflix 显示影片评分.</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2022-01-18 / 4 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://lorde627.xyz/post-images/Netflix_Ratings.webp" alt="">
+        
+        <div class="post-content yue">
+          <p>你是否曾在 Netflix 上随意浏览,点开一部电影观看到看到一半却发现烂到不行?<br>
+相信我,我已经有过数次这般的体验了.其实 Netflix 在早期是有用户评分的栏目,后来为了避免烂片没有人观赏,Netflix 将用户评分下架,改为了顶和踩的按钮,使用算法来推荐,我觉得挺没有效率的.<br>
+前不久在Telegram上发现了一款可以在 Netflix 客户端上显示 豆瓣/IMDB/烂番茄 的评分脚本,体验过后觉得很受用,再次分享给大家.</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://lorde627.xyz/post-images/1642570229523.webp" alt="" loading="lazy"></figure>
+<h2 id="准备工作">准备工作</h2>
+<p>评分脚本目前支持 Surge/Quantumult X.<br>
+<img src="https://lorde627.xyz/post-images/1642581843422.webp" alt="" loading="lazy"><br>
+请确保你能正常使用上述两软件.</p>
+<h2 id="脚本配置">脚本配置</h2>
+<h3 id="quantumult-x-配置">Quantumult X 配置</h3>
+<ol>
+<li>QX 脚本代码</li>
+</ol>
+<pre><code>[rewrite_local]
+^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-request-header https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+^https?://ios(-.*)?\.prod\.ftl\.netflix\.com/iosui/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+# 单集评分
+^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
+
+[mitm]
+hostname = ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com
+</code></pre>
+<ol start="2">
+<li>配置四部曲</li>
+</ol>
+<ul>
+<li>打开设置,进入编辑界面</li>
+<li>点击导航栏跳转按钮,选择跳转到 rewrite_local 模块</li>
+<li>添加上述脚本到 rewrite_local 模块,下滑继而将 mitm 代码填入对应模块中</li>
+<li>保存,大功告成!🎉<br>
+<img src="https://lorde627.xyz/post-images/1642606814067.webp" alt="" loading="lazy"></li>
+</ul>
+<h3 id="surge-脚本配置">Surge 脚本配置</h3>
+<ol>
+<li>Surge 脚本代码</li>
+</ol>
+<pre><code>[Script]
+nf_rating.js = type=http-request,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+nf_rating.js = type=http-response,requires-body=1,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/user/.+path=%5B%22videos%22%2C%\d+%22%2C%22summary%22%5D,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating.js
+# 单集评分
+nf_rating_season.js = type=http-response,pattern=^https?:\/\/ios(-.*)?\.prod\.ftl\.netflix\.com\/iosui\/warmer/.+type=show-ath,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/yichahucha/surge/master/nf_rating_season.js
+[MITM]
+hostname = ios-*.prod.ftl.netflix.com,ios.prod.ftl.netflix.com
+</code></pre>
+<ol start="2">
+<li>配置三部曲</li>
+</ol>
+<ul>
+<li>打开设置,进入文本编辑界面</li>
+<li>滑到底部添加,Script 和 Mitm 代码搞里头.</li>
+<li>保存,大功告成!🎉<br>
+<img src="https://lorde627.xyz/post-images/1642608086265.webp" alt="" loading="lazy"></li>
+</ul>
+<h2 id="效果展示">效果展示✨</h2>
+<figure data-type="image" tabindex="2"><img src="https://lorde627.xyz/post-images/1642608847168.webp" alt="" loading="lazy"></figure>
+<h2 id="pc端插件">PC端插件</h2>
+<p>PC端可以使用 Chrome/Edge 浏览器插件 「Popcorn - Ratings for Netflix」来实现评分显示的功能.<br>
+效果展示:<br>
+<img src="https://lorde627.xyz/post-images/1643177040500.webp" alt="" loading="lazy"><br>
+<img src="https://lorde627.xyz/post-images/1643177060794.webp" alt="" loading="lazy"></p>
+<p><a href="https://chrome.google.com/webstore/detail/popcorn-ratings-for-netfl/ockppmdlhomkjjkcknjigbmahkmdofak/related"><strong>点击前往Chrome商店安装</strong></a></p>
+<h2 id="总结">总结</h2>
+<p>在开始使用Netflix之后,我发现我的观影习惯有了变化,从豆瓣挑选电影再进行观影变成在Netflix上有啥看啥,在经历过数次感叹大烂片后,养成了在Netflix上看到感兴趣的影片,会先查评分后进行观影,简直像有了烂片PTSD.使用脚本,大大简化了我的观影流程.这样一想,根据评分选片也是一件对抗算法事情呐~</p>
+<p>Netflix 评分脚本 是来自于 GitHub 用户 <a href="https://github.com/yichahucha/surge/">yichahucha</a> 的脚本仓库.如果你觉得脚本很受用,别忘了给作者的仓库点个星🌟噢~<br>
+另外感谢  <a href="https://leonwong0609.github.io/">Leon</a>  对本篇博文作出的格式指导🙏</p>
+<h2 id="最后-lets-netflix-and-chill">最后 <s>Let's Netflix and Chill</s></h2>
+<p>欢迎关注我的<a href="https://t.me/Archie627">Telegram频道</a>,我在这里分享最新动态和一些碎碎念.</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/ECAgfLQ4S/">
+            <span class="flex-auto">豆瓣</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/hxOnugwUvz/">
+            <span class="flex-auto">IMDB</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/CqDYbFYFah/">
+            <span class="flex-auto">Surge</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/mKM_BQGOGb/">
+            <span class="flex-auto">QuantumultX</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/SIF6lx44uZ/">
+            <span class="flex-auto">烂番茄</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/3sIpj9Kn8f/">
+            <span class="flex-auto">Netflix</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://lorde627.xyz/post/AppleOne/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  <a href="https://lorde627.xyz/post/Netflix_Ratings/">[脚本分享] 烂片退散! 奈飞 Netflix 显示影片评分.</a>
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://lorde627.xyz/post/360-V6/">
+                <h3 class="post-title">
+                  百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '65e292d34b920af2d212',
+    clientSecret: '71d0e259f448b7fc74c2736719790d63f9a81d58',
+    repo: 'lorde627.github.io',
+    owner: 'Lorde627',
+    admin: ['Lorde627'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+      </div>
+    </div>
+
+    <script src="https://lorde627.xyz/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+  </body>
+</html>

@@ -1,0 +1,478 @@
+<html>
+  <head>
+     <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件 | 罗二德</title>
+<meta name="description" content="折腾是乐趣所在!" />
+<link rel="shortcut icon" href="https://lorde627.xyz/favicon.ico?v=1655887803227">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://lorde627.xyz/styles/main.css">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-192776772-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-192776772-1');
+</script>
+
+</script></script>
+
+    <meta name="description" content="随着新一代高通IPQ系列 WI-FI 6 路由器登场,风靡一时的 MTK MT762x 路由器也将踏入退休之路.
+如今路由器生态的进一步发展以及开源开发者们的无私奉献,如今的无线路由器已不仅仅只是提供无线接入,其有了更多的可玩性.
+
+初识
+..." />
+    <!-- OG -->
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:title" content="百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="随着新一代高通IPQ系列 WI-FI 6 路由器登场,风靡一时的 MTK MT762x 路由器也将踏入退休之路.
+如今路由器生态的进一步发展以及开源开发者们的无私奉献,如今的无线路由器已不仅仅只是提供无线接入,其有了更多的可玩性.
+
+初识
+...">
+    <meta property="og:url" content="https://lorde627.xyz/post/360-V6/" />
+    <meta property="og:site_name" content="罗二德">
+    <meta property="og:updated_time" content="2022-01-05">
+    <meta property="og:image" content="https://lorde627.xyz/post-images/360-V6.webp" />
+    <meta property="og:image:secure_url" content="https://lorde627.xyz/post-images/360-V6.webp">
+    <meta property="og:image:alt" content="百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件">
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://lorde627.xyz">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://lorde627.xyz/images/avatar.png?v=1655887803227" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">罗二德</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%9D%E8%AF%86">初识</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E5%AE%9E%E6%B5%8B">路由器实测 👀</a>
+<ul>
+<li><a href="#%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE">详细配置</a></li>
+<li><a href="#%E6%80%A7%E8%83%BD%E5%AE%9E%E6%B5%8B">性能实测</a>
+<ul>
+<li><a href="#%E6%97%A0%E7%BA%BFwi-fi%E9%80%9F%E7%8E%87%E6%B5%8B%E8%AF%95">无线Wi-Fi速率测试</a></li>
+</ul>
+</li>
+<li><a href="#youtube-%E6%B5%8B%E8%AF%95">YouTube 测试</a></li>
+<li><a href="#%E8%A7%A3%E5%AF%86%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95">解密性能测试</a></li>
+<li><a href="#%E6%8F%92%E4%BB%B6">插件</a>
+<ul>
+<li><a href="#adgard-home">AdGard Home</a></li>
+</ul>
+</li>
+<li><a href="#qbittorrent">QBittorrent</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%B7%E6%9C%BA%E6%95%99%E7%A8%8B">刷机教程:</a><br>
+*
+<ul>
+<li><a href="#1-%E4%B8%8D%E6%AD%BBuboot%E6%96%87%E4%BB%B6%E5%8F%8A%E5%9B%BA%E4%BB%B6%E8%8E%B7%E5%8F%96">1. 不死UBoot文件及固件获取</a></li>
+<li><a href="#uboot-%E5%92%8C-telnet-%E8%A7%A3%E9%94%81%E6%96%87%E4%BB%B6">UBoot 和 Telnet 解锁文件</a></li>
+<li><a href="#%E5%9B%BA%E4%BB%B6%E5%8C%85">固件包</a></li>
+<li><a href="#1-ipq-qsdk-%E5%9B%A2%E9%98%9F%E5%9B%BA%E4%BB%B6">1) IPQ QSDK 团队固件</a></li>
+<li><a href="#2-hugo-%E5%85%AC%E5%BC%80%E5%9B%BA%E4%BB%B6%E5%8C%85">2) Hugo 公开固件包</a></li>
+<li><a href="#2-%E8%A7%A3%E9%94%81-telnet">2. 解锁 Telnet</a></li>
+<li><a href="#3-%E5%88%B7%E5%86%99uboot%E5%92%8C%E5%A4%A7%E5%88%86%E5%8C%BA%E6%96%87%E4%BB%B6">3. 刷写Uboot和大分区文件</a></li>
+<li><a href="#4-%E8%BF%9B%E5%85%A5uboot%E4%B8%8D%E6%AD%BB%E5%88%B7%E5%86%99%E5%9B%BA%E4%BB%B6">4. 进入Uboot不死刷写固件</a></li>
+<li><a href="#%E6%97%A0%E7%BA%BF%E9%97%AE%E9%A2%98">无线问题 🆘</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E9%80%80%E4%BC%91">路由器退休 👴</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+<li><a href="#%E6%94%B6%E8%B4%B9%E9%97%AE%E9%A2%98">收费问题</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives/" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags/" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about/" class="menu" style="animation-delay: 0.6000000000000001s">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> <br>
+Hosted by <a href="https://www.vx.link" target="_blank">VX.Link</a></div>
+    <a class="rss" href="https://lorde627.xyz/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2022-01-05 / 7 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://lorde627.xyz/post-images/360-V6.webp" alt="">
+        
+        <div class="post-content yue">
+          <p>随着新一代高通IPQ系列 WI-FI 6 路由器登场,风靡一时的 MTK MT762x 路由器也将踏入退休之路.<br>
+如今路由器生态的进一步发展以及开源开发者们的无私奉献,如今的无线路由器已不仅仅只是提供无线接入,其有了更多的可玩性.</p>
+<!-- more -->
+<h2 id="初识">初识</h2>
+<p>最初接触到 360 V6 是在 Lean 的 Telegram 频道,继而在看到 @酱紫表 的折腾微博后,我那颗折腾的心按耐不住了,火速在京东上购入了 360 V6.🤑<br>
+<img src="https://lorde627.xyz/post-images/1641796765801.webp" alt="" loading="lazy"></p>
+<h2 id="路由器实测">路由器实测 👀</h2>
+<h3 id="详细配置">详细配置</h3>
+<p>360 V6 搭载了高通IPQ 6000 平台</p>
+<ul>
+<li>提供4核心 1.2 GHz CPU 与一颗硬件加速NPU</li>
+<li>2.4GHz与5GHz双频段速率分别达到了574Mbps与1201Mbps</li>
+<li>配备4颗Skyworks的信号放大器保证信号覆盖</li>
+</ul>
+<h3 id="性能实测">性能实测</h3>
+<h4 id="无线wi-fi速率测试">无线Wi-Fi速率测试</h4>
+<p>无线内网速率跑满千兆:<br>
+<img src="https://tva1.sinaimg.cn/large/006S3eYJgy1h3fzbayeajj30rm0cq767.jpg" alt="image" loading="lazy"></p>
+<h3 id="youtube-测试">YouTube 测试</h3>
+<p>YouTube 连接速度轻松跑上20万<br>
+<img src="https://tva1.sinaimg.cn/large/006S3eYJgy1h3fzcca0hqj30ew069775.jpg" alt="image" loading="lazy"></p>
+<h3 id="解密性能测试">解密性能测试</h3>
+<p><img src="https://tva3.sinaimg.cn/large/006S3eYJgy1h3fzhoien2j30tl0efq9c.jpg" alt="image" loading="lazy"><br>
+随便跑满千兆XRAY</p>
+<h3 id="插件">插件</h3>
+<h4 id="adgard-home">AdGard Home</h4>
+<p>跑 AdGuard Home 小事一桩.<br>
+<img src="https://tva2.sinaimg.cn/large/006S3eYJgy1h3h3vdyblvj31bq14qqmd.jpg" alt="image" loading="lazy"></p>
+<h3 id="qbittorrent">QBittorrent</h3>
+<p>下载轻度用户考虑可以外接一个硬盘,使用固件自带的 QBittorrent 进行下载,通过SMB共享也能充当一个小下载机.不过由于 USB 3.0 会影响 2.4G频段信号,厂商把接口阉割成 USB 2.0,速度有些拉垮.<br>
+经过ACWIFI的测试,USB读取速度为33.5MB/s，写入速度为25MB/s.<br>
+<img src="https://tvax3.sinaimg.cn/large/006S3eYJgy1h3fzmg93huj30c104sta4.jpg" alt="image" loading="lazy"><br>
+如果你想了解更多360 V6 硬件信息,请访问 ACWIFI 拆解详情: <a href="https://www.acwifi.net/10309.html">https://www.acwifi.net/10309.html</a></p>
+<p>在经过内鬼👻泄漏固件诋毁开发者事件后,终于在元旦释出了软刷.</p>
+<h2 id="刷机教程">刷机教程:</h2>
+<h4 id="1-不死uboot文件及固件获取">1. 不死UBoot文件及固件获取</h4>
+<h4 id="uboot-和-telnet-解锁文件">UBoot 和 Telnet 解锁文件</h4>
+<p>(5 RMB) UBoot不死及相关文件购买：<br>
+<a href="https://mianbaoduo.com/o/anyun/work">https://mianbaoduo.com/o/anyun/work</a><br>
+by 暗云</p>
+<h4 id="固件包">固件包</h4>
+<h4 id="1-ipq-qsdk-团队固件">1) IPQ QSDK 团队固件</h4>
+<p>最新闭源固件包获取需加入 <strong>IPQ QSDK LEDE 固件支持群.</strong><br>
+固件免费,服务支持收费 50元,若想加入请联系 Lean QQ:3335913643<br>
+<img src="https://tva2.sinaimg.cn/large/006S3eYJgy1h3fzsxjzf8j30z40wonaz.jpg" alt="image" loading="lazy"><br>
+群内还有狂风大佬开发的 EZMesh 版, Docker版等.</p>
+<h4 id="2-hugo-公开固件包">2) Hugo 公开固件包</h4>
+<p><img src="https://tvax4.sinaimg.cn/large/006S3eYJgy1h3h3yv66ktj31p810wwus.jpg" alt="image" loading="lazy"><br>
+IPQ QSDK 团队成员 Hugo 公开在恩山的 QSDK 完美固件包.<br>
+下载地址: <a href="https://wwm.lanzoub.com/inKLE04m87yb">https://wwm.lanzoub.com/inKLE04m87yb</a></p>
+<h4 id="2-解锁-telnet">2. 解锁 Telnet</h4>
+<p>使用网线连接电脑,输入 192.168.0.1 进入路由器后台,进入插件页面,选择安装 360_v6_jd_telnetd_ctrl_app_nda_signed.opk 插件,进而打开Telnet开关.<br>
+<img src="https://lorde627.xyz/post-images/1641639371136.png" alt="" loading="lazy"></p>
+<h4 id="3-刷写uboot和大分区文件">3. 刷写Uboot和大分区文件</h4>
+<p>下载 Putty 与 HFS.<br>
+Putty: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</p>
+<p>HFS:https://www.nb-fk.com/usr/uploads/2020/11/958029150.zip</p>
+<p>进入HFS<br>
+将 360v6-mibib.bin 与 uboot-qihoo-v6.bin 文件拖入左框.<br>
+点击右键复制两个文件的 URL.<br>
+<img src="https://tva1.sinaimg.cn/large/006S3eYJgy1h3h41dmtdwj30ku0bu78q.jpg" alt="image" loading="lazy"></p>
+<p>进入 Putty:<br>
+Host Name 填写 192.168.0.1<br>
+Connection Type 选择 Other:Telnet.<br>
+<img src="https://tvax2.sinaimg.cn/large/006S3eYJgy1h3h41r4k0wj30cy0chwid.jpg" alt="image" loading="lazy"></p>
+<p>输入用户名: root<br>
+密码: telnetdebug</p>
+<p>输入代码挂载tmp:<br>
+<strong>cd /tmp</strong></p>
+<p>输入 wget https://你的IP/uboot-qihoo-v6.bin (刚刚复制的URL)<br>
+wget https://你的IP/360v6-mibib.bin</p>
+<p>输入 cat /proc/mtd 查看分区<br>
+确认大分区在 1 分区,Uboot 在 13 和 14 分区.<br>
+<img src="https://tvax3.sinaimg.cn/large/006S3eYJgy1h3h42xoo7bj30zg0l612v.jpg" alt="image" loading="lazy"><br>
+确认无误后开始刷写:</p>
+<p>mtd write /tmp/360v6-mibib.bin /dev/mtd1   <strong>(刷入大分区)</strong><br>
+mtd write /tmp/uboot-qihoo-v6.bin /dev/mtd13 <strong>(UBoot 刷入第13分区)</strong><br>
+mtd write /tmp/uboot-qihoo-v6.bin /dev/mtd14 <strong>(UBoot 刷入第14分区)</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://tva1.sinaimg.cn/large/006S3eYJgy1h3h43ojv40j30mx0eh7e2.jpg" alt="image" loading="lazy"></figure>
+<p><strong>完成后请拔掉电源.</strong><br>
+<strong>完成后请拔掉电源.</strong><br>
+<strong>完成后请拔掉电源.</strong></p>
+<h4 id="4-进入uboot不死刷写固件">4. 进入Uboot不死刷写固件</h4>
+<p>再次插入电源并同时使用卡针或任何物件按住V6路由器Reset孔5秒直至红灯亮起.</p>
+<p>电脑网络设置为手动填写,IP为192.168.1.10,网关为192.168.1.1.<br>
+浏览器输入 192.168.1.1 进入不死 Uboot.<br>
+<img src="https://tvax1.sinaimg.cn/large/006S3eYJgy1h3h444yjuhj30p20efaek.jpg" alt="image" loading="lazy"><br>
+选择群文件里的最新固件进行刷写即可,到这里刷机就成功啦!~🎉<br>
+<img src="https://tvax1.sinaimg.cn/large/006S3eYJgy1h3h44i0f3lj30ot0cfgof.jpg" alt="image" loading="lazy"></p>
+<h3 id="无线问题">无线问题 🆘</h3>
+<p><strong>2022.01.19 目前新固件已解决无线速率的问题</strong><br>
+<s>不过唯一目前的不足是部分机器无线有点问题待处理,建议将无线5G功率调到18,信道选择在153-161,以获得正常的无线速率,期待后续固件开发者或许能修复这个问题.</s><br>
+<img src="https://tvax3.sinaimg.cn/large/006S3eYJgy1h3h458scqdj312y0q8gpf.jpg" alt="image" loading="lazy"></p>
+<p>若你在使用中遇到设备无法连接Wi-Fi的情况,请将加密模式改为 Mixed Mod.<br>
+<img src="https://tvax1.sinaimg.cn/large/006S3eYJgy1h3h45khl4oj30sw0emtd8.jpg" alt="image" loading="lazy"></p>
+<p>使用 V6 500M电信测速:<br>
+<img src="https://tva4.sinaimg.cn/large/006S3eYJgy1h3h460pwh6j30v91vo7m8.jpg" alt="image" loading="lazy"></p>
+<h3 id="路由器退休">路由器退休 👴</h3>
+<p>此前我使用是 斐讯K2P 路由器,在更换360 V6 路由器后完成了自己的光荣使命.<br>
+无论是 Pandavan 与 Lean开发的Pandora 固件无线都能满足跑满500M无线的速率.<br>
+超频1200Mhz后的K2P 使用Xray在实测中 YouTube 测速极限能达到5万左右,相当于5MB/s 的速度,实测YouTube,Netflix,Disney+ 4K内容都能流畅播放.<br>
+<img src="https://tva2.sinaimg.cn/large/006S3eYJgy1h3h46dmnefj30zk0qogzk.jpg" alt="image" loading="lazy"><br>
+AdGuard Home 由于K2P的小内存,我将其放在猫盘NAS上通过DNS转发来使用,效果也不错.</p>
+<p>其实斐讯 K2P 已经能完全满足我的需求,家里唯一支持 Wi-Fi6 的设备仅有一台iPhone,但无可奈何耐不住那颗爱折腾的心呐哈哈哈哈.</p>
+<p>若你还在使用 斐讯K2P 路由器,在这里给大家推荐两个固件:<br>
+Pandavan: <a href="https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=5553350&amp;extra=page%3D8%26filter%3Dtypeid%26typeid%3D14">https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=5553350&amp;extra=page%3D8%26filter%3Dtypeid%26typeid%3D14</a></p>
+<p>PandoraBox: 最新版在上述在的固件支持群的群文件里.<br>
+<img src="https://tva1.sinaimg.cn/large/006S3eYJgy1h3h46x2b2bj30mc0rwdoc.jpg" alt="image" loading="lazy"></p>
+<h2 id="总结">总结</h2>
+<p>360 V6 在这个价位的确是非常合适的选择,如果你和我一样喜欢折腾,那就来也一台 V6 吧!~</p>
+<p>不过目前由于芯片供应问题,360已经决定停产这款路由器.目前市场上还有少量存货,若有兴趣可以查看京东,淘宝,咸鱼等平台购买,也欢迎加入我们的路由器折腾群~<br>
+挺多群友改了1G内存跑Docker.<br>
+最后十分感谢固件开发者们的适配工作.若没有他们,路由器会缺少很多乐趣.👍<br>
+若你喜欢这篇文章,欢迎关注我的 Telegram 频道:<a href="https://t.me/Archie627">https://t.me/Archie627</a> 😉</p>
+<h2 id="收费问题">收费问题</h2>
+<p>我有看到一些评论在抨击固件的费用.<br>
+首先声明这不是固件本身的价格.<br>
+固件免费的,50元是服务支持收费.</p>
+<p>固件群里不仅仅有 360 V6,还有其他例如IPQXXXX处理器路由,AX6,K2P,CR660X,AX18 等等路由固件.</p>
+<p>玩过路由器的朋友们多多少少都听过Lean吧?他的开源项目Lede GitHub Fork 16K,Star近20K.在路由器圈贡献程度也不用多说,Lean 开发的 SSRP+插件多少固件使用?</p>
+<p>开源一直秉持用爱发电.适配工作也挺幸苦的,<br>
+在享受这么多年的开发者成果,我觉得请喝一杯咖啡是非常合理的事情.</p>
+<p>当然这50块,值不值,你说了算.<br>
+<img src="https://tva4.sinaimg.cn/large/006S3eYJgy1h3h47net5vj30nq0l87bx.jpg" alt="image" loading="lazy"></p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/jmdSElmZr/">
+            <span class="flex-auto">360</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/wjcifxozLR/">
+            <span class="flex-auto">路由器</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/ZZsTN5jbxz/">
+            <span class="flex-auto">OpenWrt</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/ZMk3wuYWYU/">
+            <span class="flex-auto">SSR</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/V2nNJPU31V/">
+            <span class="flex-auto">V2ray</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/JCLY5-lTAM/">
+            <span class="flex-auto">Xray</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/mCqT8aiIHU/">
+            <span class="flex-auto">Youtube</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/NvvCqfpcrx/">
+            <span class="flex-auto">科学上网</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/3sIpj9Kn8f/">
+            <span class="flex-auto">Netflix</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/Q9On1bSXWI/">
+            <span class="flex-auto">Disney+</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://lorde627.xyz/tag/9YkT_e1hVL/">
+            <span class="flex-auto">翻墙</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://lorde627.xyz/post/Netflix_Ratings/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  <a href="https://lorde627.xyz/post/360-V6/">百元最强路由器: 360 V6 软刷 QSDK OpenWrt 固件</a>
+                </h3>
+              </a>
+            </div>
+          
+
+          
+        </div>
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '65e292d34b920af2d212',
+    clientSecret: '71d0e259f448b7fc74c2736719790d63f9a81d58',
+    repo: 'lorde627.github.io',
+    owner: 'Lorde627',
+    admin: ['Lorde627'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+      </div>
+    </div>
+
+    <script src="https://lorde627.xyz/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+  </body>
+</html>
